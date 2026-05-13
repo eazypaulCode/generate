@@ -16,7 +16,12 @@ class BytesCommand : CliktCommand(
     name = "bytes"
 ) {
 
-    private val encoders = listOf(HexByteArrayEncoder(), Base64ByteArrayEncoder(), Base64UrlSafeByteArrayEncoder(), BinaryByteArrayEncoder())
+    private val encoders = listOf(
+        HexByteArrayEncoder(),
+        Base64ByteArrayEncoder(),
+        Base64UrlSafeByteArrayEncoder(),
+        BinaryByteArrayEncoder()
+    )
 
     private val length by option(
         "--length", "-l",

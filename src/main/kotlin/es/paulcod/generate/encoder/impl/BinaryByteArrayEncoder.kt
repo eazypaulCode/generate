@@ -2,7 +2,7 @@ package es.paulcod.generate.encoder.impl
 
 import es.paulcod.generate.encoder.ByteArrayEncoder
 
-class BinaryByteArrayEncoder: ByteArrayEncoder {
+class BinaryByteArrayEncoder : ByteArrayEncoder {
 
     override val name: String = "binary"
 

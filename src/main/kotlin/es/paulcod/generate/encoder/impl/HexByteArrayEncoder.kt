@@ -2,7 +2,7 @@ package es.paulcod.generate.encoder.impl
 
 import es.paulcod.generate.encoder.ByteArrayEncoder
 
-class HexByteArrayEncoder: ByteArrayEncoder {
+class HexByteArrayEncoder : ByteArrayEncoder {
 
     override val name: String = "hex"
 
