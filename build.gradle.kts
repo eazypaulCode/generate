@@ -14,6 +14,9 @@ repositories {
 dependencies {
     implementation("com.github.ajalt.clikt:clikt:5.0.1")
     implementation("com.github.ajalt.clikt:clikt-markdown:5.0.1")
+
+    implementation("com.github.f4b6a3:uuid-creator:6.1.1")
+    implementation("com.github.f4b6a3:ulid-creator:5.2.4")
 }
 
 kotlin {
