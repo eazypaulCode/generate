@@ -1,6 +1,7 @@
 package es.paulcod.generate.command
 
 import com.github.ajalt.clikt.core.CliktCommand
+import com.github.ajalt.clikt.core.CliktError
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
 import com.github.ajalt.clikt.parameters.options.validate
@@ -10,7 +11,7 @@ import es.paulcod.generate.encoder.impl.Base64ByteArrayEncoder
 import es.paulcod.generate.encoder.impl.Base64UrlSafeByteArrayEncoder
 import es.paulcod.generate.encoder.impl.BinaryByteArrayEncoder
 import es.paulcod.generate.encoder.impl.HexByteArrayEncoder
-import java.security.SecureRandom
+import es.paulcod.generate.generator.BytesGenerator
 
 class BytesCommand : CliktCommand(
     name = "bytes"
@@ -36,17 +37,9 @@ class BytesCommand : CliktCommand(
     ).choice(*encoders.map { it.name }.toTypedArray()).required()
 
     override fun run() {
-        val bytes = ByteArray(length)
-        SecureRandom().nextBytes(bytes)
+        val encoder = encoders.firstOrNull { it.name == format } ?: throw CliktError("Unknown encoder")
 
-        val encoder = encoders.firstOrNull { it.name == format }
-
-        if (encoder == null) {
-            echo("Unknown format $format", err = true)
-            return
-        }
-
-        echo(encoder.encode(bytes))
+        echo(BytesGenerator.generateBytes(length, encoder))
     }
 
 }

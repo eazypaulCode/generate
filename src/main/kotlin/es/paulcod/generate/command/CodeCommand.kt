@@ -5,7 +5,7 @@ import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
 import com.github.ajalt.clikt.parameters.options.validate
 import com.github.ajalt.clikt.parameters.types.int
-import java.security.SecureRandom
+import es.paulcod.generate.generator.CodeGenerator
 
 class CodeCommand : CliktCommand(
     name = "code"
@@ -19,13 +19,7 @@ class CodeCommand : CliktCommand(
     }
 
     override fun run() {
-        val secureRandom = SecureRandom()
-
-        val digits = CharArray(length) {
-            ('0' + secureRandom.nextInt(10))
-        }
-
-        echo(String(digits))
+        echo(CodeGenerator.generateCode(length))
     }
 
 }
